@@ -1,3 +1,4 @@
+/* General styles */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -7,7 +8,7 @@ body {
 header {
     display: flex;
     align-items: center;
-    padding: 0;
+    padding: 10px;
     background-color: #CC5500;
     color: #FFF8DC;
     position: absolute;
@@ -16,8 +17,17 @@ header {
     z-index: 10;
 }
 
-nav ul li:hover {
-    background-color: #CC5500;
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    
+    padding: 20px;
+    text-align: center;
+    color: #FFF8DC;
 }
 
 .hamburger {
@@ -29,126 +39,87 @@ nav ul li:hover {
     cursor: pointer;
 }
 
-.hamburger .bar {
-    width: 100%;
-    height: 4px;
-    background-color: rgb(255, 255, 255);
-    transition: all 0.3s ease;
-    z-index: 1000;
-}
-
-nav {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 250px;
-    height: 100%;
-    background-color: #CC5500;
-    transition: left 0.3s ease;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column; /* Stack items vertically in mobile view */
-    height: 50%;
-    justify-content: center;
-}
-
-nav ul li {
-    padding: 20px;
-    text-align: center;
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
-}
-
-nav ul li:hover {
-    background-color: #093014;
-}
-
-nav.open {
-    left: 0;
-}
-
-.hamburger.open .bar:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.hamburger.open .bar:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger.open .bar:nth-child(3) {
-    transform: rotate(-45deg) translate(9px, -9px);
-}
-
-/* Media query for larger screens (Non-mobile view) */
+/* Hide hamburger on large screens */
 @media (min-width: 768px) {
-    nav {
-        position: static; /* Remove fixed positioning */
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: auto;
-        background-color: transparent;
-        display: flex;
-        justify-content: center; /* Center the navigation */
-        align-items: center;
-        padding: 15px 0;
-        z-index: 100;
-    }
-
-    nav ul {
-        display: flex; /* Horizontal layout */
-        justify-content: center; /* Center nav items */
-        align-items: center; /* Vertically align items */
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        width: auto;
-        height: auto;
-    }
-
-    nav ul li {
-        padding: 10px 20px;
-        margin: 0 15px; /* Spacing between items */
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: #fff;
-        text-transform: uppercase;
-        border-radius: 30px;
-        background: linear-gradient(145deg, #00aaff, #0066cc);
-        transition: all 0.3s ease;
-        cursor: pointer;
-        text-align: center;
-    }
-
-    /* Hover effect */
-    nav ul li:hover {
-        background: linear-gradient(145deg, #0066cc, #00aaff);
-        color: #fff;
-        transform: translateY(-4px);
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Focus effect for accessibility */
-    nav ul li:focus {
-        outline: none;
-    }
-
-    /* Hero Image */
-    .hero-image {
-        width: 100%;
-        height: 400px;
-        background-image: url('../images/Gemini_Generated_Image_6pcp8f6pcp8f6pcp.jpeg');
-        background-size: cover;
-        background-position: center;
-    }
-
-    /* Hide hamburger icon on large screens */
     .hamburger {
         display: none;
     }
 }
+
+/* Nav items horizontal in large screens */
+@media (min-width: 768px) {
+    nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    nav ul {
+        display: flex;
+        gap: 20px; /* Space between nav items */
+    }
+
+    nav ul li {
+        padding: 10px 20px;
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        color: white;
+        background: #CC5500;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+    }
+
+    nav ul li:hover {
+        background: #FF8C00;
+    }
+}
+
+/* Footer with spinning pizza */
+
+.pizza {
+    width: 40px;  /* Reduced from 100px */
+    height: 40px; /* Reduced from 100px */
+    background-color: #FFD700;
+    border-radius: 50%;
+    position: relative;
+    animation: spin 3s linear infinite;
+}
+
+.pizza::before {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background-color: #FF6347;
+    border-radius: 50%;
+    top: 10%;
+    left: 10%;
+}
+
+.pizza::after {
+    content: "";
+    position: absolute;
+    width: 4px;   /* Reduced from 10px */
+    height: 4px;  /* Reduced from 10px */
+    background-color: #FFEB3B;
+    border-radius: 50%;
+    top: 20%;
+    left: 40%;
+    box-shadow: 10px 18px #FFEB3B ,    /* Reduced from 20px 15px */
+                -5px 19px #FFEB3B,    /* Reduced from -15px 10px */
+                13px 10px #FFEB3B,    /* Reduced from 10px 30px */
+                2px 21px #FFEB3B,   /* Reduced from -20px -10px */
+                10px 3px #FFEB3B, 
+                -0px 13px #FFEB3B,   /* Reduced from -20px -10px */
+                -8px 7px #FFEB3B,
+                7px 10px #FFEB3B,
+                -0px 7px #FFEB3B;   /* Reduced from -20px -10px */
+                    
+}
+
+    @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+} 
