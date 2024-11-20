@@ -4,7 +4,7 @@ h1{
     border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
-    margin-top:11%;
+    margin-top:6%;
     text-align: center;
     background-color: #CC5500;
     width: 50%;
@@ -19,6 +19,13 @@ h1{
     text-align: center;
     background-color: #CC5500;
     width: 70%;
+    position: absolute; /* or absolute, fixed */
+    top:25%;
+    left: 15%;
+    right: 25%;
+
+    z-index: 9998; /* Very high value to ensure it stacks above other elements */
+    /* display:none; */
 }
 
 
@@ -75,6 +82,7 @@ nav ul li {
 
 /* Nav items horizontal in large screens */
 @media (min-width: 768px) {
+
     nav {
         display: flex;
         justify-content: center;
@@ -101,7 +109,6 @@ nav ul li {
     nav ul li:hover {
         background: #FF8C00;
     }
-    /* Footer with spinning pizza */
 
 .pizza {
     width: 40px;  /* Reduced from 100px */
@@ -109,7 +116,7 @@ nav ul li {
     background-color: #FFD700;
     border-radius: 50%;
     position: relative;
-    animation: spin 3s linear infinite;
+    animation: spin 10s linear infinite;
 }
 
 .pizza::before {
@@ -168,14 +175,30 @@ nav ul li {
 
 
 
+@media (max-width: 868px) {
+    h1{
+        margin-top:15%;
+    }
+
+}
 
 
 
+@media (max-width: 868px) {
+    h1{
+        margin-top:15%;
+    }
 
-
+}
 
 
 @media (max-width: 768px) {
+    h1{
+        margin-top:15%;
+    }
+    .about{
+        z-index: 1;
+    }
     .hamburger {
         display: flex;
         flex-direction: column;
@@ -239,4 +262,59 @@ nav ul li {
     .hamburger.open .bar:nth-child(3) {
         transform: rotate(-45deg) translate(9px, -9px);
     }
+}
+@media (min-width: 1100px) {
+    .pizza-big{display:none;}
+
+}
+
+.pizza-big {
+    width: 60vw; /* 60% of the viewport width */
+    height: 60vw; /* Maintain the aspect ratio */
+    max-width: 60vh; /* Ensure it doesn't exceed the viewport height */
+    max-height: 60vh; /* Ensure it stays square */
+    background-color: #e5c994;
+    border-radius: 50%;
+    position: absolute;
+    top:39%;
+    left:-10%;
+    /* right:20%; */
+    animation: spin 20s linear infinite;
+}
+
+.pizza-big::before {
+    content: "";
+    position: absolute;
+    width: 80%; /* Same relative percentage */
+    height: 80%; /* Same relative percentage */
+    background-color: #FF6347;
+    border-radius: 50%;
+    top: 10%; /* Same relative percentage */
+    left: 10%; /* Same relative percentage */
+}
+
+.pizza-big::after {
+    content: "";
+    position: absolute;
+    width: 2vw; /* 10% of the pizza size */
+    height: 2vw; /* Same as width to stay circular */
+    background-color: #FFEB3B;
+    border-radius: 50%;
+    top: 12%; /* Adjusted to fit proportionally */
+    left: 42%; /* Adjusted to fit proportionally */
+    box-shadow: 
+        15vw 25vw #FFEB3B,  /* Adjusted for larger size */
+        -10vw 28vw #FFEB3B, 
+        20vw 15vw #FFEB3B, 
+        5vw 30vw #FFEB3B, 
+        18vw 8vw #FFEB3B, 
+        0vw 20vw #FFEB3B, 
+        -12vw 10vw #FFEB3B,
+        12vw 15vw #FFEB3B,
+        0vw 10vw #FFEB3B; 
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
