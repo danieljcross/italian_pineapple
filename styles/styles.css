@@ -4,7 +4,7 @@ h1{
     border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
-    margin-top:6%;
+    margin-top: calc(6% + 50px); /* Adjusted to account for nav height */
     text-align: center;
     background-color: #CC5500;
     width: 50%;
@@ -173,14 +173,6 @@ nav ul li {
 
 
 
-
-
-@media (max-width: 868px) {
-    h1{
-        margin-top:15%;
-    }
-
-}
 
 
 
