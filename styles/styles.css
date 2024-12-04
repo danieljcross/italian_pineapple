@@ -1,3 +1,34 @@
+/* General styles */
+h1{
+    border: 2px solid;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:6%;
+    text-align: center;
+    background-color: #CC5500;
+    width: 50%;
+
+}
+.about{
+    border: 2px solid;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top:11%; */
+    text-align: center;
+    background-color: #CC5500;
+    width: 70%;
+    position: absolute; /* or absolute, fixed */
+    top:25%;
+    left: 15%;
+    right: 25%;
+
+    z-index: 9998; /* Very high value to ensure it stacks above other elements */
+    /* display:none; */
+}
+
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -7,7 +38,7 @@ body {
 header {
     display: flex;
     align-items: center;
-    padding: 0;
+    padding: 10px;
     background-color: #CC5500;
     color: #FFF8DC;
     position: absolute;
@@ -16,8 +47,17 @@ header {
     z-index: 10;
 }
 
-nav ul li:hover {
-    background-color: #CC5500;
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    
+    padding: 20px;
+    text-align: center;
+    color: #FFF8DC;
 }
 
 .hamburger {
@@ -29,130 +69,263 @@ nav ul li:hover {
     cursor: pointer;
 }
 
-.hamburger .bar {
-    width: 100%;
-    height: 4px;
-    background-color: rgb(255, 255, 255);
-    transition: all 0.3s ease;
-    z-index: 1000;
-}
 
-nav {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 250px;
-    height: 100%;
-    background-color: #CC5500;
-    transition: left 0.3s ease;
-}
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column; /* Stack items vertically in mobile view */
-    height: 50%;
-    justify-content: center;
-}
 
-nav ul li {
-    padding: 20px;
-    text-align: center;
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
-}
 
-nav ul li:hover {
-    background-color: #093014;
-}
-
-nav.open {
-    left: 0;
-}
-
-.hamburger.open .bar:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.hamburger.open .bar:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger.open .bar:nth-child(3) {
-    transform: rotate(-45deg) translate(9px, -9px);
-}
-
-/* Media query for larger screens (Non-mobile view) */
+/* Hide hamburger on large screens */
 @media (min-width: 768px) {
-    nav {
-        position: static; /* Remove fixed positioning */
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: auto;
-        background-color: transparent;
-        display: flex;
-        justify-content: center; /* Center the navigation */
-        align-items: center;
-        padding: 15px 0;
-        z-index: 100;
-    }
-
-    nav ul {
-        display: flex; /* Horizontal layout */
-        justify-content: center; /* Center nav items */
-        align-items: center; /* Vertically align items */
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        width: auto;
-        height: auto;
-    }
-
-    nav ul li {
-        padding: 10px 20px;
-        margin: 0 15px; /* Spacing between items */
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: #fff;
-        text-transform: uppercase;
-        border-radius: 30px;
-        background: linear-gradient(145deg, #00aaff, #0066cc);
-        transition: all 0.3s ease;
-        cursor: pointer;
-        text-align: center;
-    }
-
-    /* Hover effect */
-    nav ul li:hover {
-        background: linear-gradient(145deg, #0066cc, #00aaff);
-        color: #fff;
-        transform: translateY(-4px);
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Focus effect for accessibility */
-    nav ul li:focus {
-        outline: none;
-    }
-
-    /* Hero Image */
-    .hero-image {
-        width: 100%;
-        height: 400px;
-        background-image: url('../images/Gemini_Generated_Image_6pcp8f6pcp8f6pcp.jpeg');
-        background-size: cover;
-        background-position: center;
-    }
-
-    /* Hide hamburger icon on large screens */
     .hamburger {
         display: none;
     }
 }
 
+/* Nav items horizontal in large screens */
+@media (min-width: 768px) {
+
+    nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    nav ul {
+        display: flex;
+        gap: 20px; /* Space between nav items */
+    }
+
+    nav ul li {
+        padding: 10px 20px;
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        color: white;
+        background: #CC5500;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+    }
+
+    nav ul li:hover {
+        background: #FF8C00;
+    }
+
+.pizza {
+    width: 40px;  /* Reduced from 100px */
+    height: 40px; /* Reduced from 100px */
+    background-color: #FFD700;
+    border-radius: 50%;
+    position: relative;
+    animation: spin 10s linear infinite;
+}
+
+.pizza::before {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background-color: #FF6347;
+    border-radius: 50%;
+    top: 10%;
+    left: 10%;
+}
+
+.pizza::after {
+    content: "";
+    position: absolute;
+    width: 4px;   /* Reduced from 10px */
+    height: 4px;  /* Reduced from 10px */
+    background-color: #FFEB3B;
+    border-radius: 50%;
+    top: 20%;
+    left: 40%;
+    box-shadow: 10px 18px #FFEB3B ,    /* Reduced from 20px 15px */
+                -5px 19px #FFEB3B,    /* Reduced from -15px 10px */
+                13px 10px #FFEB3B,    /* Reduced from 10px 30px */
+                2px 21px #FFEB3B,   /* Reduced from -20px -10px */
+                10px 3px #FFEB3B, 
+                -0px 13px #FFEB3B,   /* Reduced from -20px -10px */
+                -8px 7px #FFEB3B,
+                7px 10px #FFEB3B,
+                -0px 7px #FFEB3B;   /* Reduced from -20px -10px */
+                    
+}
+
+    @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+} 
+}
 
 
-/* Menu Page */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 868px) {
+    h1{
+        margin-top:15%;
+    }
+
+}
+
+
+
+@media (max-width: 868px) {
+    h1{
+        margin-top:15%;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+    h1{
+        margin-top:15%;
+    }
+    .about{
+        z-index: 1;
+    }
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+}
+
+
+
+    
+    .hamburger .bar {
+        width: 100%;
+        height: 4px;
+        background-color: rgb(255, 255, 255);
+        transition: all 0.3s ease;
+        z-index: 1000;
+    }
+    
+    nav {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 250px;
+        height: 100%;
+        background-color: #CC5500;
+        transition: left 0.3s ease;
+    }
+    
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        height: 50%;
+        justify-content: center;
+    }
+    
+    nav ul li {
+        padding: 20px;
+        text-align: center;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+    }
+    
+    nav ul li:hover {
+        background-color: #DAA520;
+    }
+    
+    nav.open {
+        left: 0;
+    }
+    
+    .hamburger.open .bar:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .hamburger.open .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.open .bar:nth-child(3) {
+        transform: rotate(-45deg) translate(9px, -9px);
+    }
+/* There was a closing brace } right here. I deleted it. If it was part of a media query, 
+please fix it and re-add the brackets. */
+
+@media (min-width: 1100px) {
+    .pizza-big{display:none;}
+
+}
+
+.pizza-big {
+    width: 60vw; /* 60% of the viewport width */
+    height: 60vw; /* Maintain the aspect ratio */
+    max-width: 60vh; /* Ensure it doesn't exceed the viewport height */
+    max-height: 60vh; /* Ensure it stays square */
+    background-color: #e5c994;
+    border-radius: 50%;
+    position: absolute;
+    top:39%;
+    left:-10%;
+    /* right:20%; */
+    animation: spin 20s linear infinite;
+}
+
+.pizza-big::before {
+    content: "";
+    position: absolute;
+    width: 80%; /* Same relative percentage */
+    height: 80%; /* Same relative percentage */
+    background-color: #FF6347;
+    border-radius: 50%;
+    top: 10%; /* Same relative percentage */
+    left: 10%; /* Same relative percentage */
+}
+
+.pizza-big::after {
+    content: "";
+    position: absolute;
+    width: 2vw; /* 10% of the pizza size */
+    height: 2vw; /* Same as width to stay circular */
+    background-color: #FFEB3B;
+    border-radius: 50%;
+    top: 12%; /* Adjusted to fit proportionally */
+    left: 42%; /* Adjusted to fit proportionally */
+    box-shadow: 
+        15vw 25vw #FFEB3B,  /* Adjusted for larger size */
+        -10vw 28vw #FFEB3B, 
+        20vw 15vw #FFEB3B, 
+        5vw 30vw #FFEB3B, 
+        18vw 8vw #FFEB3B, 
+        0vw 20vw #FFEB3B, 
+        -12vw 10vw #FFEB3B,
+        12vw 15vw #FFEB3B,
+        0vw 10vw #FFEB3B; 
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+
+/* Menu page */
+
