@@ -444,6 +444,36 @@ please fix it and re-add the brackets. */
     background-color: #FF8C00;
 }
 
+/* Additional styles for cart icon and counter */
+.cart-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.cart-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.cart-counter {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
 .reset-cart {
     background-color: red;
     color: white;
@@ -463,3 +493,4 @@ please fix it and re-add the brackets. */
 .reset-cart:hover {
     background-color: darkred;
 }
+
