@@ -33,7 +33,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #DAA520;
-    overflow: hidden; /* Prevent scrolling entirely if you don't want any scrollbars */
+    /* overflow: hidden; Prevent scrolling entirely if you don't want any scrollbars */
 }
 
 /* Hide scrollbar for Chrome, Safari, and Opera */
