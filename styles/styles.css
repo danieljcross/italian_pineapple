@@ -70,6 +70,12 @@ nav ul li {
     padding: 20px;
     text-align: center;
     color: #FFF8DC;
+    align-self: center;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
 }
 
 .hamburger {
@@ -81,6 +87,10 @@ nav ul li {
     cursor: pointer;
 }
 
+main h1 {
+    padding: 10px;
+}
+
 /* coupons.html page css */
 #coupons {
     display: flex;
@@ -88,7 +98,7 @@ nav ul li {
     /* grid-template-columns: repeat(3, 1fr); */
     justify-self: center;
     width: fit-content;
-    margin-top: 80px;
+    margin-top: 0;
     /* max-width: 1200px; */
     gap: 20px;    
 }
@@ -110,6 +120,7 @@ nav ul li {
     border: 2px solid brown;
     padding: 20px;
     box-shadow: 4px 4px 10px 2px brown;
+    border-radius: 5px;
 
 }
 
@@ -119,6 +130,13 @@ nav ul li {
     cursor: pointer;
     border: 1px solid brown;
     box-shadow: 4px 4px 10px 2px brown;
+    border-radius: 6px;
+}
+
+footer {
+    align-self: baseline;
+    justify-self: center;
+    margin-top: 100px;
 }
 
 /* Hide hamburger on large screens */
