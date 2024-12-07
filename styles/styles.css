@@ -211,7 +211,7 @@ nav ul li {
         height: 30px;
         cursor: pointer;
     }
-    
+
 
 
 
@@ -338,9 +338,11 @@ please fix it and re-add the brackets. */
 
 #menu-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 500px;
+    gap: 30px;
     padding: 20px;
+    justify-self: center;
 }
 
 .menu-item {
@@ -348,7 +350,7 @@ please fix it and re-add the brackets. */
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 10px;
-    background-color: #FFF8DC;
+    background-color: green;
 }
 
 .menu-item img {
@@ -386,4 +388,24 @@ please fix it and re-add the brackets. */
 
 .menu-item button:hover {
     background-color: #FF8C00;
+}
+
+.reset-cart {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100px;
+    height: 55px;
+    display: flex;
+    justify-self: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.reset-cart:hover {
+    background-color: darkred;
 }
