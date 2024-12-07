@@ -121,10 +121,6 @@ nav ul li {
     box-shadow: 4px 4px 10px 2px brown;
 }
 
-#coupon2 {
-    /* border-right: 1px solid #CC5500; */
-}
-
 /* Hide hamburger on large screens */
 @media (min-width: 768px) {
     .hamburger {
