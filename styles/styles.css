@@ -81,9 +81,49 @@ nav ul li {
     cursor: pointer;
 }
 
+/* coupons.html page css */
+#coupons {
+    display: flex;
+    flex-direction: column;
+    /* grid-template-columns: repeat(3, 1fr); */
+    justify-self: center;
+    width: fit-content;
+    margin-top: 80px;
+    /* max-width: 1200px; */
+    gap: 20px;    
+}
 
+#coupons div {
+    display: grid;
+    grid-template-columns:  1fr 1fr;
+    gap: 60px;
+    column-gap: 60px;
+    /* border: 2px solid brown; */
+    /* padding: 20px; */
+}
 
+.coupon {
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animation for hover effect */
+    background-color: #CC5500;
+    border: none;
+    overflow-wrap: inherit;
+    border: 2px solid brown;
+    padding: 20px;
+    box-shadow: 4px 4px 10px 2px brown;
 
+}
+
+.coupon-image {
+    width: 80%; /* Set relative size within grid cell */
+    max-width: 150px; /* Prevent images from getting too large */
+    cursor: pointer;
+    border: 1px solid brown;
+    box-shadow: 4px 4px 10px 2px brown;
+}
+
+#coupon2 {
+    /* border-right: 1px solid #CC5500; */
+}
 
 /* Hide hamburger on large screens */
 @media (min-width: 768px) {
