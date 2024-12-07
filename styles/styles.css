@@ -211,7 +211,7 @@ nav ul li {
         height: 30px;
         cursor: pointer;
     }
-}
+    
 
 
 
@@ -272,6 +272,7 @@ nav ul li {
     }
 /* There was a closing brace } right here. I deleted it. If it was part of a media query, 
 please fix it and re-add the brackets. */
+}
 
 @media (min-width: 1100px) {
     .pizza-big{display:none;}
