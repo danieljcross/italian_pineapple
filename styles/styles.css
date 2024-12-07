@@ -334,3 +334,56 @@ please fix it and re-add the brackets. */
 
 /* Menu page */
 
+
+
+#menu-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.menu-item {
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #FFF8DC;
+}
+
+.menu-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.menu-item h3 {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    color: #CC5500;
+}
+
+.menu-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.menu-item ul li {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.menu-item button {
+    padding: 10px 20px;
+    background-color: #CC5500;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.menu-item button:hover {
+    background-color: #FF8C00;
+}
