@@ -16,17 +16,28 @@
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-
+        
         <nav id="nav">
             <ul>
-
+                <li><div class="pizza"></div></li>
                 <li>
-                    <div class="pizza"></div>
+                    <a href="index.html">About</a>
                 </li>
-                <li>About</li>
-                <li>Menu</li>
-                <li>Cart</li>
-                <li>Deals</li>
+                <li>
+                    <a href="menu.html">Menu</a>
+                </li>
+                
+                <li>
+                    <a href="coupons.html">Deals</a>
+                </li>
+                <li>
+                    <a href="cart.html">
+                            <div class="cart-container">
+                                <img src="images/—Pngtree—cart shopping cart icon png_5456484.png" alt="Cart" class="cart-icon">
+                                <div id="cart-counter" class="cart-counter">0</div>
+                            </div>
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
@@ -36,11 +47,10 @@
         <ul id="cart-list">
         </ul>
         <!-- Buttons for adding and removing list items -->
-        <button id="add-item">Add Item</button>
     </main>
     <footer>
+        <p>&copy; 2024 Italian Pineapple. All Rights Reserved.</p>
     </footer>
+    <script src="./script/navscript.js"></script>
 </body>
-<script src="script/cart.js"></script>
-
 </html>
