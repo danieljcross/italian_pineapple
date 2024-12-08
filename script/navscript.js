@@ -1,14 +1,66 @@
 // navscript.js
-document.getElementById('hamburger').addEventListener('click', function() {
+document.getElementById('hamburger').addEventListener('click', function () {
     this.classList.toggle('open');
     document.getElementById('nav').classList.toggle('open');
 });
 
-{/* <p class="about">Welcome to Pineapple Paradise, where the sunny sweetness of pineapple meets the savory perfection of pizza! Here at our vibrant eatery, we believe in celebrating the unexpected harmony between tropical fruit and pizza crust, bringing you a slice of sunshine with every bite. Whether you’re a devoted fan of the classic Hawaiian or you’re daring enough to try something new, we’ve crafted a menu full of deliciously bold combinations that elevate pineapple to its rightful place as a pizza topping champion. From sweet and smoky to tangy and savory, our pizzas are made with the finest ingredients, all prepared with a dash of creativity and a whole lot of love. So grab a slice, kick back, and let us transport you to the sweet, sunny side of pizza paradise!</p> */}
+/*
+Shared Cart Functions
+*/
 
+const cartCounter = document.getElementById("cart-counter");
+let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+// Function to update the cart counter
+function updateCartCounter() {
+    if (cartCounter) {
+        cartCounter.textContent = cartItems.length;
+    }
+}
+
+// Function to save cart to localStorage
+function saveCartToLocalStorage() {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+}
+
+// Function to remove an item from the cart
+function removeFromCart(pizzaId) {
+    cartItems = cartItems.filter(item => item.id !== pizzaId);
+    saveCartToLocalStorage();
+    renderCartItems(); // Re-render cart items after removal
+    updateCartCounter(); // Update the counter
+}
+
+// Function to render the cart items dynamically (used on the cart page)
+function renderCartItems() {
+    const cartList = document.getElementById("cart-list");
+
+    if (cartList) {
+        cartList.innerHTML = ""; // Clear current list
+
+        if (cartItems.length === 0) {
+            const emptyMessage = document.createElement("li");
+            emptyMessage.textContent = "Your cart is empty.";
+            cartList.appendChild(emptyMessage);
+        } else {
+            cartItems.forEach((item) => {
+                const cartItem = document.createElement("li");
+                cartItem.textContent = item.name;
+
+                const removeButton = document.createElement("button");
+                removeButton.textContent = "Remove";
+                removeButton.style.marginLeft = "10px";
+                removeButton.addEventListener("click", () => removeFromCart(item.id));
+
+                cartItem.appendChild(removeButton);
+                cartList.appendChild(cartItem);
+            });
+        }
+    }
+}
 
 /*
-Menu Page
+Menu Page Functionality
 */
 
 const pizzas = [
@@ -23,9 +75,7 @@ const pizzas = [
 ];
 
 const menuContainer = document.getElementById("menu-container");
-const cartCounter = document.getElementById("cart-counter");
 const resetButton = document.getElementById("reset-button");
-let cartItemCount = 0;
 
 // Function to create pizza item HTML
 function createPizzaItem(pizza) {
@@ -35,7 +85,7 @@ function createPizzaItem(pizza) {
     const pizzaImage = document.createElement("img");
     pizzaImage.src = pizza.image;
     pizzaImage.alt = pizza.name;
-    pizzaImage.style.width = "100%"; // Ensure the image fits within its container
+    pizzaImage.style.width = "100%";
     pizzaImage.style.borderRadius = "8px";
 
     const pizzaTitle = document.createElement("h2");
@@ -46,10 +96,7 @@ function createPizzaItem(pizza) {
 
     const addButton = document.createElement("button");
     addButton.textContent = "Add to Cart";
-    addButton.addEventListener("click", () => {
-        cartItemCount++;
-        updateCartCounter();
-    });
+    addButton.addEventListener("click", () => addToCart(pizza));
 
     pizzaItem.appendChild(pizzaImage);
     pizzaItem.appendChild(pizzaTitle);
@@ -59,22 +106,46 @@ function createPizzaItem(pizza) {
     return pizzaItem;
 }
 
-// Function to update the cart counter display
-function updateCartCounter() {
-    cartCounter.textContent = cartItemCount;
+// Function to add a pizza to the cart
+function addToCart(pizza) {
+    if (!cartItems.some(item => item.id === pizza.id)) {
+        cartItems.push({ id: pizza.id, name: pizza.name });
+        saveCartToLocalStorage(); // Update localStorage
+        updateCartCounter(); // Update cart counter
+    }
 }
 
 // Function to reset the cart
 function resetCart() {
-    cartItemCount = 0;
+    cartItems = [];
+    saveCartToLocalStorage(); // Clear localStorage
     updateCartCounter();
+    renderCartItems(); // Re-render cart if on cart page
 }
 
 // Render all pizzas
-pizzas.forEach((pizza) => {
-    const pizzaElement = createPizzaItem(pizza);
-    menuContainer.appendChild(pizzaElement);
+if (menuContainer) {
+    pizzas.forEach((pizza) => {
+        const pizzaElement = createPizzaItem(pizza);
+        menuContainer.appendChild(pizzaElement);
+    });
+}
+
+// Add event listener to reset button (only if it exists on the current page)
+if (resetButton) {
+    resetButton.addEventListener("click", resetCart);
+}
+
+// Update cart counter on page load
+updateCartCounter();
+
+// Render cart items if on cart page
+renderCartItems();
+
+// Listen for changes to localStorage
+window.addEventListener("storage", () => {
+    cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    renderCartItems();
+    updateCartCounter();
 });
 
-// Add event listener to reset button
-resetButton.addEventListener("click", resetCart);
