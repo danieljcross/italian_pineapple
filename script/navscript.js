@@ -4,6 +4,8 @@ document.getElementById('hamburger').addEventListener('click', function () {
     document.getElementById('nav').classList.toggle('open');
 });
 
+
+
 /*
 Shared Cart Functions
 */
@@ -58,6 +60,8 @@ function renderCartItems() {
         }
     }
 }
+
+
 
 /*
 Menu Page Functionality
